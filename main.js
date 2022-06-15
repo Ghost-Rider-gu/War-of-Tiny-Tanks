@@ -1,8 +1,21 @@
-window.addEventListener('load', prepareCanvas);
+import { Game } from './src/Game.js';
 
-function prepareCanvas() {
+window.addEventListener('load', initGame);
+
+function initGame() {
     const mainScreen = document.getElementById('main-screen');
     const canvasContext = mainScreen.getContext('2d');
     mainScreen.width = 500;
-    mainScreen.height = 500; 
+    mainScreen.height = 500;
+    
+    const game = new Game(mainScreen.width, mainScreen.height);
+
+    function animate() {
+        canvasContext.clearRect(0, 0, mainScreen.width, mainScreen.height);
+        game.update();
+        game.draw(canvasContext);
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 }
