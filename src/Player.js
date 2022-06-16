@@ -11,13 +11,25 @@ export class Player {
         this.image = document.getElementById('player');
 
         this.speed = 0;
+        this.maxSpeed = 5;
     }
 
     update(input) {
+        this.x += this.speed;
         if (input === 'ArrowRight') {
-            this.x++;
+            this.speed = this.maxSpeed;
         } else if (input === 'ArrowLeft') {
-            this.x--;
+            this.speed = -this.maxSpeed;
+        } else {
+            this.speed = 0;
+        }
+
+        // checking boundaries
+        if (this.x < 0) {
+            this.x = 0;
+        }
+        if (this.x > this.game.width - this.width) {
+            this.x = this.game.width - this.width;
         }
     }
 
