@@ -9,13 +9,16 @@ function initGame() {
     mainScreen.height = 500;
     
     const game = new Game(mainScreen.width, mainScreen.height);
+    let lastTime = 0;
 
-    function animate() {
+    function animate(timeStamp) {
+        const deltaTime = timeStamp - lastTime;
+        lastTime = timeStamp;
         canvasContext.clearRect(0, 0, mainScreen.width, mainScreen.height);
-        game.update();
+        game.update(deltaTime);
         game.draw(canvasContext);
         requestAnimationFrame(animate);
     }
 
-    animate();
+    animate(0);
 }
