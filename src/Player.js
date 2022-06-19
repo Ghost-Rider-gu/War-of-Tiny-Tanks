@@ -65,7 +65,7 @@ export class Player {
     draw(context) {
         context.drawImage(this.tankBarrelSprite,
             0,
-            0,
+            68,
             144,
             34,
             this.x + 70,

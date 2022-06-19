@@ -14,6 +14,11 @@
     max-height: 100%;
 }
 
-#player, #tank_barrel, #tank_yellow_plates {
+#player,
+#tank_barrel,
+#tank_yellow_plates,
+#background,
+#cloud,
+#water_sprites {
     display: none;
 }
